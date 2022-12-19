@@ -10,7 +10,7 @@
 <body>
     <h1>Sewa Kendaraan </h1>
     <h3>List Kendaraan</h3>
-    <p><a href="add_anggota_220088.php"> Add New Kendaraan</a></p>
+    <p><a href="add_asset.php"> Add New Kendaraan</a></p>
     <table border="1">
         <tr>
             <th>Id</th>
@@ -39,8 +39,8 @@
             <td><?php echo $data['jenis_kendaraan']; ?></td>
             <td><?php echo $data['deskripsi_kendaraan']; ?></td>
             <td><a href="edit_anggota_220088.php?id=<?=$data['id_anggota_220088']?>">Edit Kendaraan</a></td>
-            <td><a href="delete_anggota_220088.php?id=<?=$data['id_anggota_220088']?>"
-                    onclick="return confirm('Are You sure?')">Delete Kendaraan</a></td>
+            <td><a href="delete_asset.php?id=<?=$data['id_asset']?>" onclick="return confirm('Are You sure?')">Delete
+                    Kendaraan</a></td>
         </tr>
         <?php endforeach ?>
     </table>

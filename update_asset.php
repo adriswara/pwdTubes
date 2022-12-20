@@ -1,7 +1,7 @@
 <?php 
 
 if (isset($_POST['save'])) {
-    include "connection_220088.php";
+    include "connection.php";
 
 
 
@@ -10,7 +10,7 @@ $query = "UPDATE asset_kendaraan SET
           nama_kendaraan = '$_POST[nama_kendaraan]', 
           merek_kendaraan = '$_POST[merek_kendaraan]', 
           jenis_kendaraan = '$_POST[jenis_kendaraan]', 
-          deskripsi_kendaraan = '$_POST[deskripsi_kendaraan]', 
+          deskripsi_kendaraan = '$_POST[deskripsi_kendaraan]'
           WHERE id_asset = '$_POST[id_asset]';
           ";
 

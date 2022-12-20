@@ -9,7 +9,7 @@
 
 <body>
     <h1>Situs Penyewaan</h1>
-    <h3> Perpustakaan</h3>
+    <h3>sewa Kendaraan</h3>
     <p><a href="read_asset.php">List Asset Sewa</a></p>
 
 

@@ -38,7 +38,7 @@
             <td><?php echo $data['merek_kendaraan']; ?></td>
             <td><?php echo $data['jenis_kendaraan']; ?></td>
             <td><?php echo $data['deskripsi_kendaraan']; ?></td>
-            <td><a href="edit_anggota_220088.php?id=<?=$data['id_anggota_220088']?>">Edit Kendaraan</a></td>
+            <td><a href="edit_asset.php?id=<?=$data['id_asset']?>">Edit Kendaraan</a></td>
             <td><a href="delete_asset.php?id=<?=$data['id_asset']?>" onclick="return confirm('Are You sure?')">Delete
                     Kendaraan</a></td>
         </tr>

@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perpustakaan Adriswara</title>
+    <title>Sewa Kendaraan</title>
 </head>
 
 <body>
-    <h1>Perpustakaan Adriswara</h1>
+    <h1>Sewa Kendaraan</h1>
     <h3>Form Edit Pengguna</h3>
-    <form method="POST" action="update_anggota_220088.php">
+    <form method="POST" action="update_asset.php">
         <?php 
-              include "connection_220088.php";
-              $querry = "SELECT * FROM anggota_220088 WHERE id_anggota_220088='$_GET[id]'";
+              include "connection.php";
+              $querry = "SELECT * FROM asset_kendaraan WHERE id_asset='$_GET[id]'";
               $pet=mysqli_query($db_connection,$querry);
               $data=mysqli_fetch_assoc($pet);
           ?>
@@ -21,68 +21,40 @@
 
         <table>
             <tr>
-                <td>Nik</td>
-                <td><input type="text" name="nik_220088" value="<?= $data['nik_220088']; ?>" required></td>
+                <td>harga</td>
+                <td><input type="text" name="harga" value="<?= $data['harga']; ?>" required></td>
             </tr>
             <tr>
                 <td>Nama</td>
-                <td><input type="text" name="nama_lengkap_220088" value="<?= $data['nama_lengkap_220088']; ?>" required>
-                </td>
+                <td><input type="text" name="nama_kendaraan" value="<?= $data['nama_kendaraan']; ?>" required></td>
             </tr>
             <tr>
-                <td>Jenis Kelamin</td>
+                <td>merek_kendaraan</td>
+                <td><input type="text" name="merek_kendaraan" value="<?= $data['merek_kendaraan']; ?>" required></td>
+            </tr>
+
+            <tr>
+                <td> jenis_kendaraan</td>
                 <td>
-                    <input type="radio" name="jenis_kelamin_220088" value="Laki-laki"
-                        <?= ($data['jenis_kelamin_220088']=='Laki-laki')?'checked':'';?> required>Laki-laki
-                    <input type="radio" name="jenis_kelamin_220088" value="Perempuan"
-                        <?= ($data['jenis_kelamin_220088']=='Perempuan')?'checked':'';?> required>Perempuan
-                </td>
-            </tr>
-            <tr>
-                <td>tanggal lahir</td>
-                <td><input type="date" name="tanggal_lahir_220088" value="<?= $data['tanggal_lahir_220088']; ?>"
-                        required></td>
-            </tr>
-            <tr>
-                <td>Alamat</td>
-                <td>
-                    <textarea name="alamat_220088" required> <?= $data['alamat_220088']; ?> </textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>Telepon</td>
-                <td><input type="text" name="telepon_220088" value="<?= $data['telepon_220088']; ?>" required></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td><input type="email" name="email_220088" value="<?= $data['email_220088']; ?>" required></td>
-            </tr>
-            <tr>
-                <td> Pekerjaan</td>
-                <td>
-                    <select name="pekerjaan_220088" id="">
+                    <select name="jenis_kendaraan" id="">
                         <option value="">Choose</option>
-                        <option value="mahasiswa" <?= ($data['pekerjaan_220088']=='mahasiswa')?'selected':'';?>>
-                            mahasiswa</option>
-                        <option value="dosen" <?= ($data['pekerjaan_220088']=='dosen')?'selected':'';?>>dosen</option>
-                        <option value="karyawan" <?= ($data['pekerjaan_220088']=='karyawan')?'selected':'';?>>karyawan
+                        <option value="compact" <?= ($data['jenis_kendaraan']=='compact')?'selected':'';?>>compact
                         </option>
+                        <option value="sedan" <?= ($data['jenis_kendaraan']=='sedan')?'selected':'';?>>sedan</option>
+                        <option value="sport" <?= ($data['jenis_kendaraan']=='sport')?'selected':'';?>>sport</option>
+                        <option value="crossover" <?= ($data['jenis_kendaraan']=='crossover')?'selected':'';?>>crossover
+                        </option>
+                        <option value="mpv" <?= ($data['jenis_kendaraan']=='mpv')?'selected':'';?>>mpv</option>
+                        <option value="suv" <?= ($data['jenis_kendaraan']=='suv')?'selected':'';?>>suv</option>
+                        <option value="van" <?= ($data['jenis_kendaraan']=='van')?'selected':'';?>>van</option>
                     </select>
                 </td>
             </tr>
+
             <tr>
-                <td>Hobi</td>
+                <td>deskripsi_kendaraan</td>
                 <td>
-                    <input type="text" name="hobi_220088" value="<?= $data['hobi_220088']; ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>Status Anggota</td>
-                <td>
-                    <input type="radio" name="status_anggota_220088" value="Aktif"
-                        <?= ($data['status_anggota_220088']=='Aktif')?'checked':'';?> required>Aktif
-                    <input type="radio" name="status_anggota_220088" value="Tidak Aktif"
-                        <?= ($data['status_anggota_220088']=='Tidak Aktif')?'checked':'';?> required>Tidak Aktif
+                    <textarea name="deskripsi_kendaraan" required> <?= $data['deskripsi_kendaraan']; ?> </textarea>
                 </td>
             </tr>
 
@@ -91,12 +63,12 @@
                 <td>
                     <input type="submit" name="save" value="SAVE">
                     <input type="reset" name="reset" value="RESET">
-                    <input type="hidden" name="id_anggota_220088" value="<?=$data['id_anggota_220088']?>">
+                    <input type="hidden" name="id_asset" value="<?=$data['id_asset']?>">
                 </td>
             </tr>
             <table>
     </form>
-    <p><a href="read_anggota_220088.php">CANCEL</a></p>
+    <p><a href="read_asset.php">CANCEL</a></p>
 </body>
 
 </html>

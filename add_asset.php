@@ -56,7 +56,7 @@
                     <input type="reset" name="reset" value="RESET">
                 </td>
             </tr>
-            <table>
+        </table>
     </form>
     <p><a href="read_asset.php">CANCEL</a></p>
 </body>

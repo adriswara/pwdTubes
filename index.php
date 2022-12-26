@@ -11,6 +11,7 @@
     <h1>Situs Penyewaan</h1>
     <h3>sewa Kendaraan</h3>
     <p><a href="read_asset.php">List Asset Sewa</a></p>
+    <p><a href="read_admin.php">List Admin</a></p>
 
 
 </body>

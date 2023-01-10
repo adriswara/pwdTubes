@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Kendaraan</title>
 </head>
+<?php 
+    session_start();
+    if(!isset($_SESSION['login'])) {
+	    echo "<script>alert('Please Login First !');window.location.replace('index.php');</script>";
+}
+?>
+
 
 <body>
     <h1>Sewa Kendaraan </h1>
@@ -17,7 +24,7 @@
             <th>username</th>
             <th>Password</th>
             <th>fullname</th>
-            <th colspan="2">Action</th>
+            <th colspan="3">Action</th>
         </tr>
 
         <?php 
@@ -35,12 +42,16 @@
             <td><?php echo $data['password']; ?></td>
             <td><?php echo $data['fullname']; ?></td>
             <td><a href="edit_admin.php?id=<?=$data['id_admin']?>">Edit Admin</a></td>
-            <td><a href="delete_admin.php?id=<?=$data['id_admin']?>" onclick="return confirm('Are You sure?')">Delete
-                    Admin</a></td>
+            <td><a href="delete_admin.php?id=<?=$data['id_admin']?>"
+                    onclick="return confirm('Are You sure?')">DeleteAdmin</a></td>
+            <td><button class="action-btn">
+                    <p><a href="reset_password.php?id=<?=$data['id_admin'];?>&type=<?=$data['username'];?>"
+                            onclick="return confirm('are you sure reset the password?')">Reset Password</a></p>
+                </button></td>
         </tr>
         <?php endforeach ?>
     </table>
-    <p><a href="index.php">Back to Home</a></p>
+    <p><a href="admin_dashboard.php">Back to Home</a></p>
 </body>
 
 </html>

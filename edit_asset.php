@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Kendaraan</title>
 </head>
+<?php 
+    session_start();
+    if(!isset($_SESSION['login'])) {
+	    echo "<script>alert('Please Login First !');window.location.replace('index.php');</script>";
+}
+?>
 
 <body>
     <h1>Sewa Kendaraan</h1>

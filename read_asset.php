@@ -29,6 +29,9 @@
         <td><?php echo $data['merek_kendaraan']; ?></td>
         <td><?php echo $data['jenis_kendaraan']; ?></td>
         <td><?php echo $data['deskripsi_kendaraan']; ?></td>
+        <td align="center"><img src="img/<?= $data['display_kendaraan'];?>" width="50" height="50" alt=""><br>
+            <a href="display_kendaraan.php?id=<?=$data['id_asset']?>">Change Photo</a>
+        </td>
         <td><a href="edit_asset.php?id=<?=$data['id_asset']?>">Edit Kendaraan</a></td>
         <td><a href="delete_asset.php?id=<?=$data['id_asset']?>" onclick="return confirm('Are You sure?')">Delete
                 Kendaraan</a></td>

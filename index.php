@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include "header.php"; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Situs Sewa</title>
-</head>
+<h1>
+    <span>Looking</span> to<br />
+    rent a car
+</h1>
+<p>
+    sebuah website untuk menyewa mobil yang berkulitas dan di percaya.
+</p>
+<div class="app-stores">
+    <img src="img/ios.png" alt="" />
+    <img src="img/512x512.png" alt="" />
+</div>
 
-<body>
-    <h1>Situs Penyewaan</h1>
-    <h3>sewa Kendaraan</h3>
-    <p><a href="login_admin.php">Login</a></p>
-
-
-</body>
-
-</html>
+<?php include "footer.php"; ?>

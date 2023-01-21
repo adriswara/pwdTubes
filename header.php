@@ -20,7 +20,7 @@
 
         <ul class="navbar">
             <li><a href="index.php">Home</a></li>
-            <li><a href="index.php">Rides</a></li>
+            <li><a href="list_asset.php">Rides</a></li>
             <li><a href="index.php">Find Order</a></li>
             <!-- <li><a href="#reviews">About</a></li>
             <li><a href="#reviews">Home</a></li> -->

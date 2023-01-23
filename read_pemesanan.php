@@ -2,11 +2,11 @@
 
 <?php include "header.php"; ?>
 
-<h1>List Admin</h1>
-<p><a href="add_admin.php"> Add New Admin</a></p>
+<h1>List Tansaksi</h1>
+
 <table border="1">
     <tr>
-        <th>Id</th>
+        <th>Id Tansaksi</th>
         <th>Id Asset</th>
         <th>Durasi</th>
         <th>Nama Pemesanan</th>
@@ -41,7 +41,7 @@
         <td><?php echo $data['lokasi_pengambilan']; ?></td>
         <td><?php echo $data['total_harga']; ?></td>
         <td><?php echo $data['status_pembayaran']; ?></td>
-        <td><a href="edit_admin.php?id=<?=$data['id_admin']?>">Status Pembayaran</a></td>
+        <td><a href="edit_pembayaran.php?id=<?=$data['id_pemesanan']?>">Status Pembayaran</a></td>
             </button></td>
     </tr>
     <?php endforeach ?>

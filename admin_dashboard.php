@@ -11,6 +11,7 @@
 
 <p><a href="read_asset.php">List Asset Sewa</a></p>
 <p><a href="read_admin.php">List Admin</a></p>
+<p><a href="read_pemesanan.php">List Pemesanan</a></p>
 
 
 <?php include "footer.php" ?>

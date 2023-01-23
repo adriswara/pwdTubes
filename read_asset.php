@@ -8,8 +8,9 @@
         <th>harga</th>
         <th>Nama Kendaraan</th>
         <th>Merek Kendaraan</th>
-        <th> Jenis Kendaraan</th>
+        <th>Jenis Kendaraan</th>
         <th>Deskripsi</th>
+        <th>Image</th>
         <th colspan="2">Action</th>
     </tr>
 

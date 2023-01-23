@@ -1,5 +1,14 @@
 <?php include "header.php"; ?>
 
+<style>
+body  {
+  background-image: url("img/Car\ Website\ –\ 1@2x.png");
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: cover;
+}
+</style>
+
 <h3>Form Login</h3>
 <form class="form" method="post" action="login_query.php">
     <table class="table-form">

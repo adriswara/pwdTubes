@@ -13,6 +13,7 @@ $create = mysqli_query($db_connection ,$query);
 if ($create) {
     // echo "<p>Pet added succesfully !</p>";
     echo "<script> alert('wisata added succesfuly !'); </script>";
+  
 }
 else{
     // echo "<p>Pet add failed !</p>";
@@ -23,5 +24,8 @@ echo "<script> alert('wisata add failed!'); </script>";
 ?>
 <!-- <p><a href="read_pet_220088.php">BACK TO PETS LIST</a></p> -->
 <script>
-window.location.replace("index.php");
+    var php_var = "<?php echo $_POST["no_telfon_pemesanan"]; ?>";
+    var link = "find_order.php?id=";
+    var result = link.concat(php_var);
+window.location.replace(result);
 </script>

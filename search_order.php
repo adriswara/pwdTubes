@@ -1,96 +1,107 @@
 <?php include "header.php"; ?>
 
-<?php
-        include "connection.php";
-        //make query dari id
-        $query="SELECT * FROM asset_kendaraan WHERE id_asset='$_GET[id]'";
-        //menjalankan query
-        $user= mysqli_query($db_connection,$query);
-        //extrak hasil query
-        $data=mysqli_fetch_assoc($user);
-    ?>
+<form method="post">
+<label>Search</label>
+<input type="text" name="search">
+<input type="submit" name="submit">
+	
+</form>
 
-<div class="add">
-    <h3>Edit User Form</h3>
-    <form class="add-form" method="post" action="transaksi_asset.php">
-        <h1>Detail Unit Pemesanan</h1>
+</body>
+</html>
+
+<?php
+
+$con = new PDO("mysql:host=localhost;dbname=sewa_kendaraan",'root','');
+
+if (isset($_POST["submit"])) {
+	$str = $_POST["search"];
+	$sth = $con->prepare("SELECT ak.nama_kendaraan,ak.merek_kendaraan,ak.lokasi_kendaraan,ak.jenis_kendaraan,ak.deskripsi_kendaraan,p.alamat_pemesanan,p.durasi_pemesanan,p.email_pemesanan,p.id_asset,p.id_pemesanan,p.lokasi_pengambilan,p.metode_pembayaran,p.nama_pemesanan,p.no_telfon_pemesanan,p.status_pembayaran,p.total_harga
+    FROM pemesanan as p 
+    INNER JOIN asset_kendaraan as ak ON ak.id_asset = p.id_asset WHERE p.id_pemesanan like '$str' ");
+
+	$sth->setFetchMode(PDO:: FETCH_OBJ);
+	$sth -> execute();
+
+	if($row = $sth->fetch())
+	{
+        ?>
+        <br><br><br>
+        <h1>Resi Pemesanan</h1>
+
         <table>
             <tr>
-                <td class="add-td">ID Kendaraan</td>
-                <td><input type="text" class="input border-0"  name="id_asset" value="<?=$data['id_asset']?>" readonly required>
+                <td>
+                    <h2 style="color:orange">Hasil Pencarian Pemesanan</h2>
+                    <h2>Nomor Pemesanan :  <?php echo $row->id_pemesanan;?></h2>
                 </td>
+        
             </tr>
-            
+            <tr><td><h4>informasi kendaraan</h4></td></tr>
+           
             <tr>
                 <td class="add-td">Nama Kendaraan</td>
-                <td><input type="text" class="input border-0"  name="nama_kendaraan" value="<?=$data['nama_kendaraan']?>" readonly required>
+                <td><input type="text" class="input border-0"  name="nama_kendaraan" value="<?php echo $row->nama_kendaraan;?>" readonly required>
                 </td>
             </tr>
             <tr>
                 <td class="add-td">Tahun Kendaraan</td>
-                <td><input type="text" class="input border-0"  name="deskripsi_kendaraan" value="<?=$data['deskripsi_kendaraan']?>" readonly required>
+                <td><input type="text" class="input border-0"  name="deskripsi_kendaraan" value="<?php echo $row->deskripsi_kendaraan;?>" readonly required>
                 </td>
             </tr>
-            <tr>
-                <td class="add-td">Harga</td>
-                <td><input type="text" class="input border-0"  id="harga" name="harga" value="<?=$data['harga']?>" readonly required>
-                </td>
-            </tr>
-            <tr>
-                <td class="add-td">Total Harga Penyewaan</td>
-                <td><input type="text" class="input border-0" id="hargaTotal"  name="total_harga"  value="<?=$data['harga']?>"  readonly required>
-                </td>
-            </tr>
+        
             <tr>
                 <td class="add-td">Jenis Kendaraan</td>
-                <td><input type="text" class="input border-0"  name="jenis_kendaraan" value="<?= $data['jenis_kendaraan']; ?>" readonly required>
+                <td><input type="text" class="input border-0"  name="jenis_kendaraan" value="<?php echo $row->jenis_kendaraan;?>" readonly required>
                 </td>
             </tr>
             <tr>
                 <td class="add-td">Lokasi Kendaraan</td>
-                <td><input type="text" class="input border-0"  name="lokasi_kendaraan" value="<?= $data['lokasi_kendaraan']; ?>" readonly required>
+                <td><input type="text" class="input border-0"  name="lokasi_kendaraan" value="<?php echo $row->lokasi_kendaraan;?>" readonly required>
                 </td>
             </tr>
             <tr>
 
-            <td><h4>Input Informasi Pemesanan</h4></td>
+            <td><h4>Informasi Pemesan</h4></td>
             <tr>
                 <td class="add-td">durasi pemesanan (hari)</td>
-                <td><input type="text" id="jumlah" name="durasi_pemesanan" onkeyup="hitungPesan()"  required>
+                <td><input type="text" class="input border-0" id="jumlah" name="durasi_pemesanan" value="<?php echo $row->durasi_pemesanan;?>" readonly required>
                 </td>
             </tr>
             <tr>
                 <td class="add-td">nama_pemesanan</td>
-                <td><input type="text" name="nama_pemesanan"  required>
+                <td><input type="text" class="input border-0" name="nama_pemesanan"  value="<?php echo $row->nama_pemesanan;?>" readonly required>
                 </td>
             </tr>
             <tr>
                 <td class="add-td">email_pemesanan</td>
-                <td><input type="text" name="email_pemesanan"  required>
+                <td><input type="text" class="input border-0" name="email_pemesanan" value="<?php echo $row->email_pemesanan;?>" readonly  required>
                 </td>
             </tr>
             <tr>
                 <td class="add-td">alamat_pemesanan</td>
-                <td><input type="text" name="alamat_pemesanan"  required>
+                <td><input type="text" class="input border-0" name="alamat_pemesanan" value="<?php echo $row->alamat_pemesanan;?>" readonly  required>
                 </td>
             </tr>
             <tr>
                 <td class="add-td">no_telfon_pemesanan</td>
-                <td><input type="text" name="no_telfon_pemesanan"  required>
+                <td><input type="text" class="input border-0" name="no_telfon_pemesanan" value="<?php echo $row->no_telfon_pemesanan;?>" readonly  required>
                 </td>
             </tr>
             <tr>
-            <td> Metode Pembayaan</td>
-            <td>
-                <select name="metode_pembayaran" id="">
-                    <option value="cash">Cash</option>
-                    <option value="transfer">Transfer</option>
-                </select>
-            </td>
-        </tr>
+                <td class="add-td">Metode Pembayaran</td>
+                <td><input type="text" class="input border-0" name="metode_pembayaran" value="<?php echo $row->metode_pembayaran;?>" readonly  required>
+                </td>
+            </tr>
             <tr>
                 <td class="add-td">lokasi_pengambilan</td>
-                <td><input type="text" name="lokasi_pengambilan"  required>
+                <td><input type="text" class="input border-0" name="lokasi_pengambilan" value="<?php echo $row->lokasi_pengambilan;?>" readonly  required>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="add-td">Status Pembayaran</td>
+                <td><input type="text" class="input border-0" name="status_pembayaran" value="<?php echo $row->status_pembayaran;?>" readonly  required>
                 </td>
             </tr>
 
@@ -98,33 +109,29 @@
             <tr>
                 <td></td>
                 <td>
-                    <button class="action-btn" type="submit" name="save">Save</button>
-                    <button class="action-btn" type="reset" name="reset">Reset</button>
+                <input type="button" value="Simpan Resi" onclick="reprintPage()" />
                     <button class="action-btn" type="cancel" name="cancel"><a
-                            href="lsit_asset.php">Cancel</a></button>
+                            href="index.php">Selesai</a></button>
                     <input type="hidden" name="id_asset" value="<?=$data['id_asset']?>">
                 </td>
             </tr>
         </table>
-    </form>
 
-    <script>
+        <script>
+            function reprintPage() {
+                window.print();
+            }
+        </script>
 
 
-
-function hitungPesan() {
-    var inputHarga = parseInt(document.getElementById("harga").value);
-    var jmlTiket = document.getElementById("jumlah").value;
-    var result;
-    var tiket = parseInt(jmlTiket);
-
-    result = inputHarga * tiket;
-
-    document.getElementById("hargaTotal").value = result;
-    console.log(result);
+        <?php 
+	}
+		
+	else{
+	    echo "Name Does not exist";
+	}
 }
-</script>
-
+?>
 <?php include "footer.php"; ?>
 
 <!-- SELECT ak.nama_kendaraan,ak.merek_kendaraan,ak.lokasi_kendaraan,ak.jenis_kendaraan,ak.deskripsi_kendaraan,p.alamat_pemesanan,p.durasi_pemesanan,p.email_pemesanan,p.id_asset,p.id_pemesanan,p.lokasi_pengambilan,p.metode_pembayaran,p.nama_pemesanan,p.no_telfon_pemesanan,p.status_pembayaran,p.total_harga
